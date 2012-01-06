@@ -14,6 +14,12 @@ $_SESSION['csrfToken'] = $csrfToken;
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script src="http://js.pusher.com/1.11/pusher.min.js"></script>
     <script>
+      Pusher.log = function(msg) {
+        if(console && console.log) {
+          console.log(msg);
+        }
+      };
+    
       var channels = {};
       var appKey = "<?php echo(APP_KEY); ?>";
       var csrfToken = "<?php echo($csrfToken); ?>";
@@ -55,7 +61,7 @@ $_SESSION['csrfToken'] = $csrfToken;
           channels[channelName].bind('pusher:subscription_succeeded', function() {
 
             channels[channelName].bind('event', function(eventData) {
-              alert(JSON.stringify(eventData));
+              log('Event received:\n' + JSON.stringify(eventData));
             });
 
             triggerEvent(channelName, jsonData);
@@ -64,6 +70,7 @@ $_SESSION['csrfToken'] = $csrfToken;
         else {
           triggerEvent(channelName, jsonData);
         }
+        return false;
       };
       
       function triggerEvent(channelName, jsonData) {
@@ -76,9 +83,13 @@ $_SESSION['csrfToken'] = $csrfToken;
             csrfToken: csrfToken
           },
           complete: function(xhr, status) {
-            alert(status + ': ' + xhr.responseText);
+            log(status + ': ' + xhr.responseText);
           }
         });
+      };
+      
+      function log(msg) {
+        $('#logs').prepend('<div>' + msg + '</div>');
       };
     </script>
   </head>
@@ -87,5 +98,7 @@ $_SESSION['csrfToken'] = $csrfToken;
     <input type="text" id="channelName" value="test-channel" /><br />
     <textarea id="data">{"hello":"world"}</textarea>
     <button id="triggerBtn">Trigger</button>
+    <h3>Logs</h3>
+    <div id="logs"></div>
   </body>
 </html>
