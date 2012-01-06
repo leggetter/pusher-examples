@@ -10,6 +10,9 @@ A resource of **really simple** how-to examples.
 
 Provides a way of subscribing to and triggering events on any channel name. A good way of double-checking if your channel name is valid. Uses the [PHP Pusher library by squeeks](https://github.com/squeeks/Pusher-PHP). Also see [Channel naming conventions](http://pusher.com/docs/client_api_guide/client_channels#naming-channels).
 
+You can view the code in action here:
+<http://www.leggetter.co.uk/pusher/pusher-examples/php/channel_names/src/>
+
 ### Excluding events from a recipient (Ruby)
 
 `ruby/excluding-clients/src`
