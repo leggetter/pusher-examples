@@ -1,0 +1,3 @@
+*.DS_Store
+php/config.php
+ruby/config.rb

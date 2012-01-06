@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <script src="http://js.pusher.com/1.10/pusher.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+    Pusher.log = function(msg) {
+      if(console && console.log) {
+        console.log(msg);
+      }
+    };
+    
+    var pusher = new Pusher("<%= Pusher.key %>");
+    var socketId = null;
+    pusher.connection.bind('connected', function() {
+      socketId = pusher.connection.socket_id;
+      
+      init();
+    });
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('message_received', function(data) {
+      alert(data.message);
+    });
+    
+    function init() {
+      $('#triggerBtn').click(handleTrigger);
+    };
+    
+    function handleTrigger() {
+      var data = {
+        message: 'hello world'
+      };
+      
+      if( $("#excludeMe").is(':checked') ) {
+        data.socket_id = socketId; // pass socket_id parameter to be used by server
+      }
+      
+      jQuery.ajax({
+        url: "/trigger_event",
+        type: "post",
+        data: data
+      });
+    };
+    </script>
+  </head>
+  <body>
+    <button id="triggerBtn">Trigger</button><br />
+    <label for="excludeMe">Exclude me from event message:</label>
+    <input type="checkbox" id="excludeMe" />
+  </body>
+</html>
