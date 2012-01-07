@@ -1,3 +1,6 @@
 *.DS_Store
 php/config.php
 ruby/config.rb
+pusher_pipe/node/config.js
+pusher_pipe/node/node_modules
+

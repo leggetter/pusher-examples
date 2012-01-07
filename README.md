@@ -19,6 +19,10 @@ You can view the code in action here:
 
 Shows how to exclude recipients from receiving events when trigger events using the Pusher Ruby gem.
 
+### QuickStart example for the Pusher Pipe (Node.js)
+
+`pusher_pipe/node/src`
+
 ## Want to see an example?
 
 Please email [support@pusher.com](mailto:support@pusher.com?subject=Pusher Example request).

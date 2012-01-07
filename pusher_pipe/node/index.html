@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <script type="text/javascript" src="http://js.pusherapp.com/1.10.0-pre/pusher.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <script type="text/javascript">
+        Pusher.host = "ws.darling.pusher.com"
+        Pusher.log = function(message) {
+            log(message);
+        };
+        var pusher = null;
+        
+        $(init);
+        
+        function init() {
+          $("#send").click(sendEvent);
+          
+          createPusher();
+        };
+        
+        function createPusher() {
+          pusher = new Pusher('577f0d13ea03ad86c8d5');
+          
+          var channel = pusher.subscribe('my-channel');
+          channel.bind('my_event', function(data) {
+            log( JSON.stringify(data) );
+          });
+        }
+        
+        function sendEvent() {
+          log("sending");
+          pusher.back_channel.trigger('eventFromBrowser', {some: 'data'});
+          pusher.back_channel.bind('acknowledge', function(data) {
+            log('back_channel: ' + JSON.stringify(data));
+          });
+        }
+        
+        function log(msg) {
+          $('#logs').prepend('<div>' + msg + '</div>');
+        };
+    </script>
+    </head>
+    <body>
+      <button id="send">Send Event</button>
+      
+      <h3>Logs</h3>
+      <div id="logs"></div>
+    </body>
+</html>
