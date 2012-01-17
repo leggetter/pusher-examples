@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>GAE Pusher Test</title>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://js.pusherapp.com/1.10/pusher.min.js"></script>
+    <script>
+    	Pusher.log = function(msg) {
+    		if(console && console.log) {
+    			console.log(msg);
+    		}
+    	}
+
+    	$(function() {
+    		var pusher = new Pusher('49e26cb8e9dde3dfc009');
+    		var channel = pusher.subscribe('my-channel');
+    		channel.bind('my_event', function(data) {
+    			alert(data.msg);
+    		});
+
+    		$('#triggerBtn').click(function() {
+    			$.ajax({
+    				url: '/trigger'
+    			});
+    		});
+
+    		$('#subscribePrivateBtn').click(function(){
+    			var privateChannel = pusher.subscribe('private-channel');
+    			privateChannel.bind('pusher:subscription_error', function(statusCode) {
+    				alert('Problem subscribe to "private-channel": ' + statusCode);
+    			});
+    			privateChannel.bind('pusher:subscription_succeeded', function() {
+    				alert('Successfully subscribe to "private-channel"');
+    			});
+    		});
+
+			$('#subscribePresenceBtn').click(function(){
+				Pusher.channel_auth_endpoint = '/pusher/presence_auth';
+
+    			var presenceChannel = pusher.subscribe('presence-channel');
+    			presenceChannel.bind('pusher:subscription_error', function(statusCode) {
+    				alert('Problem subscribe to "presence-channel": ' + statusCode);
+    			});
+    			presenceChannel.bind('pusher:subscription_succeeded', function() {
+    				alert('Successfully subscribe to "presence-channel"');
+    			});
+
+    			Pusher.channel_auth_endpoint = '/pusher/auth'
+    		});    		
+    	});
+    </script>
+  </head>
+  <body>
+    <h1>GAE Pusher Test</h1>
+    <button id="triggerBtn">Trigger Event</button><br />
+    <button id="subscribePrivateBtn">Subscribe to Private Channel</button>
+    <button id="subscribePresenceBtn">Subscribe to Presence Channel</button>
+  </body>
+</html>

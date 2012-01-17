@@ -19,6 +19,12 @@ You can view the code in action here:
 
 Shows how to exclude recipients from receiving events when trigger events using the Pusher Ruby gem.
 
+### Using Pusher on Google App Engine
+
+View the README.md file in `python-gae` for more information.
+
+`python-gae/src`
+
 ### QuickStart example for the Pusher Pipe (Node.js)
 
 `pusher_pipe/node/src`
