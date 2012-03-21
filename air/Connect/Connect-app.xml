@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<application xmlns="http://ns.adobe.com/air/application/2.7"> 
+    <id>examples.pusher.Connect</id> 
+    <versionNumber>0.1</versionNumber> 
+    <filename>Connect</filename> 
+    <initialWindow> 
+        <content>Connect.html</content> 
+        <visible>true</visible> 
+        <width>400</width> 
+        <height>200</height> 
+    </initialWindow> 
+</application>

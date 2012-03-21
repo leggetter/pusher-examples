@@ -1,0 +1,31 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Adobe Air - Pusher Test</h1>
+    <div id="connection_state">waiting</div>
+    
+    <script>
+      air = top.air;
+    </script>
+    <script type="text/javascript" src="web-socket-js/swfobject.js"></script>
+    <script type="text/javascript" src="web-socket-js/web_socket.js"></script>
+    <script type="text/javascript">
+
+      // Let the library know where WebSocketMain.swf is:
+      WEB_SOCKET_SWF_LOCATION = "web-socket-js/WebSocketMain.swf";
+    </script>
+    <script src="pusher.min.js"></script> 
+    <script>
+    
+      Pusher.log = function(msg) {
+        air.trace(msg);
+      }
+      
+      var pusher = new Pusher('c9f5043738b6f7e428fa');
+      pusher.connection.bind('state_change', function(state) {
+        document.getElementById('connection_state').innerText = state.current;
+      })
+    </script>
+  </body>
+</html>
