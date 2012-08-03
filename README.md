@@ -19,6 +19,14 @@ You can view the code in action here:
 
 Shows how to exclude recipients from receiving events when trigger events using the Pusher Ruby gem.
 
+### Publishing Events from a Rails Model
+
+`ruby/rails/src`
+
+Update `ruby/rails/src/initializers/pusher.rb` with your Pusher credentials.
+
+Code for triggering/publishing the event can be found in `ruby/rails/src/app/models/post.rb`
+
 ### Using Pusher on Google App Engine
 
 View the README.md file in `python-gae` for more information.
