@@ -1,5 +1,5 @@
 <?php
-require '../../lib/squeeks-Pusher-PHP/lib/Pusher.php';
+require_once('../../vendor/autoload.php');
 require '../../config.php';
 
 session_start();

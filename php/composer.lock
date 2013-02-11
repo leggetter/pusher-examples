@@ -1,0 +1,54 @@
+{
+    "hash": "6038cb5b5634acf84aceea124847517e",
+    "packages": [
+        {
+            "name": "pusher/pusher-php-server",
+            "version": "v2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pusher/pusher-php-server",
+                "reference": "v2.1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/pusher/pusher-php-server/archive/v2.1.3.zip",
+                "reference": "v2.1.3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2",
+                "ext-curl": "*"
+            },
+            "time": "2012-12-22 01:50:13",
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Library for interacting with the Pusher REST API",
+            "homepage": "https://github.com/pusher/pusher-php-server",
+            "keywords": [
+                "rest",
+                "events",
+                "publish",
+                "pusher",
+                "php-pusher-server",
+                "realtime",
+                "trigger"
+            ]
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ]
+}

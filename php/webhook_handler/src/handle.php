@@ -2,7 +2,7 @@
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
 
-  require '../../lib/squeeks-Pusher-PHP/lib/Pusher.php';
+  require_once('../../vendor/autoload.php');
   require_once( '../../config.php' );
 
   define( 'CHANNEL', 'webhook_info' );
