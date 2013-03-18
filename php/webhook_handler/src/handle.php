@@ -13,8 +13,13 @@
 
   $app_secret = APP_SECRET;
 
-  $app_key = $_SERVER ['HTTP_X_PUSHER_KEY']; 
-  $webhook_signature = $_SERVER ['HTTP_X_PUSHER_SIGNATURE'];
+  $app_key = $_SERVER['HTTP_X_PUSHER_KEY']; 
+  $webhook_signature = $_SERVER['HTTP_X_PUSHER_SIGNATURE'];
+
+  $headers = array();
+  foreach( $_SERVER as $key => $value ) {
+    $headers[] = $key;
+  }
   
   $body = file_get_contents('php://input');
 
@@ -22,7 +27,8 @@
     array(
       'key' => $app_key,
       'signature' => $webhook_signature,
-      'body' => $body
+      'body' => $body,
+      'headers' => implode( ',' , $headers )
     )
   );
 
