@@ -1,18 +1,22 @@
 application: gae-pusher-test
 version: 1
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: true
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
 
 handlers:
-
 - url: /
-  script: main.py
+  script: main.app
 
 - url: /trigger
-  script: trigger.py
+  script: trigger.app
 
 - url: /pusher/auth
-  script: pusher_auth.py
+  script: pusher_auth.app
 
 - url: /pusher/presence_auth
-  script: pusher_presence_auth.py  
+  script: pusher_presence_auth.app

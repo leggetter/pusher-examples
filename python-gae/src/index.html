@@ -11,6 +11,7 @@
     	}
 
     	$(function() {
+            // Change this to your app key.
     		var pusher = new Pusher('49e26cb8e9dde3dfc009');
     		var channel = pusher.subscribe('my-channel');
     		channel.bind('my_event', function(data) {

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 #
 from google.appengine.ext import webapp
-from google.appengine.ext.webapp import util
 import pusher
 
 try:
@@ -15,11 +14,5 @@ class TriggerHandler(webapp.RequestHandler):
 
 	    p['my-channel'].trigger('my_event',{'msg': 'Hello world!'})
 
-def main():
-    application = webapp.WSGIApplication([('/trigger', TriggerHandler)],
+app = webapp.WSGIApplication([('/trigger', TriggerHandler)],
                                          debug=True)
-    util.run_wsgi_app(application)
-
-
-if __name__ == '__main__':
-    main()
